@@ -51,11 +51,21 @@ public class PaisController {
 	}
 
 	// ************** Create *********************
+	
+	//http://localhost:8030/proveedor/pais/agregar/EEUU/Washinton/US
+	@GetMapping("/agregar/{nombrePais}/{capital}/{codigo}"/* path="", consumes={MediaType.APPLICATION_JSON_VALUE} */)
+	public Pais agregar(
+			@PathVariable("nombrePais") String nombrePais, 
+			@PathVariable("capital") String capital,
+			@PathVariable("codigo") String codigo
+			){
+		return paisService.agregar(nombrePais, capital,codigo);
+	}
 
-	//http://localhost:8030/proveedor/pais
+	//http://localhost:8030/proveedor/pais/crear
 	/** ingresar en body>raw> json : {
 	"pais":"EEUU","capital":"Washinton","codigo":"US"} **/
-	@PostMapping(/* path="", consumes={MediaType.APPLICATION_JSON_VALUE} */)
+	@PostMapping("/crear"/* path="", consumes={MediaType.APPLICATION_JSON_VALUE} */)
 	public Pais add(@RequestBody Pais pais) {
 		return paisService.crear(pais);
 	}

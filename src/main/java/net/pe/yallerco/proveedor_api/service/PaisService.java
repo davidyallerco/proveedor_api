@@ -16,6 +16,8 @@ public interface PaisService {
 
 	// Create
 	public Pais crear(Pais pais);
+	
+	public Pais agregar(String nombrePais, String capital, String codigo);
 
 	public void guardar(Pais pais);
 

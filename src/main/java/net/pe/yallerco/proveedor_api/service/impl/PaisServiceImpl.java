@@ -40,6 +40,15 @@ public class PaisServiceImpl implements PaisService{
 	}
 	
 	@Override
+	public Pais agregar(String nombrePais, String capital, String codigo) {
+		Pais pais = new Pais();
+		pais.setPais(nombrePais);
+		pais.setCapital(capital);
+		pais.setCodigo(codigo);
+		return paisRepository.save(pais);
+	}
+	
+	@Override
 	public void guardar(Pais pais) {
 		paisRepository.save(pais);
 	}
@@ -94,6 +103,8 @@ public class PaisServiceImpl implements PaisService{
 //		}
 		return null;
 	}
+
+	
 
 	
 
