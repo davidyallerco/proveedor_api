@@ -90,6 +90,12 @@ public class PaisController {
 		pais.setId(id);
 		return paisService.actualizar(pais);
 	}
+	
+	@PutMapping
+	public Pais actualizar(@RequestBody Pais pais) {
+		return paisService.actualizar(pais);
+	}
+
 
 	// ************* Delete *****************************
 
