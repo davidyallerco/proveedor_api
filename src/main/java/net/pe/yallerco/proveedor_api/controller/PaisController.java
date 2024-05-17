@@ -44,7 +44,7 @@ public class PaisController {
 		return paisService.buscarPorIdOptional(id).orElse(null);
 	}
 
-	// http://localhost:8030/proveedor/pais/2
+	//http://localhost:8030/proveedor/pais/buscar?id=2
 	@GetMapping("/buscar")
 	public Pais buscarPorId3(@RequestParam Long id) {
 		return paisService.buscarPorId(id);
@@ -53,7 +53,7 @@ public class PaisController {
 	// ************** Create *********************
 	
 	//http://localhost:8030/proveedor/pais/agregar/EEUU/Washinton/US
-	@GetMapping("/agregar/{nombrePais}/{capital}/{codigo}"/* path="", consumes={MediaType.APPLICATION_JSON_VALUE} */)
+	@PostMapping("/agregar/{nombrePais}/{capital}/{codigo}"/* path="", consumes={MediaType.APPLICATION_JSON_VALUE} */)
 	public Pais agregar(
 			@PathVariable("nombrePais") String nombrePais, 
 			@PathVariable("capital") String capital,
@@ -61,10 +61,11 @@ public class PaisController {
 			){
 		return paisService.agregar(nombrePais, capital,codigo);
 	}
+	//....vi tambien que funciona con GET pero para crear se debe usar POST
 
 	//http://localhost:8030/proveedor/pais/crear
-	/** ingresar en body>raw> json : {
-	"pais":"EEUU","capital":"Washinton","codigo":"US"} **/
+	// ingresar en body>raw> json :
+	//  {"pais":"EEUU","capital":"Washinton","codigo":"US"} 
 	@PostMapping("/crear"/* path="", consumes={MediaType.APPLICATION_JSON_VALUE} */)
 	public Pais add(@RequestBody Pais pais) {
 		return paisService.crear(pais);
